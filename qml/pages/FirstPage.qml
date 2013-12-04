@@ -32,44 +32,74 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 
-Page {
+Page
+{
     id: page
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
-    SilicaFlickable {
+    SilicaFlickable
+    {
         anchors.fill: parent
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
-        PullDownMenu {
-            MenuItem {
+        PullDownMenu
+        {
+            MenuItem
+            {
                 text: "Näytä toinen sivu"
                 onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
             }
+            MenuItem
+            {
+                text: "Näytä kolmas sivu"
+                onClicked: pageStack.push(Qt.resolvedUrl("ThirdPage.qml"))
+            }
+
         }
+
 
         // Tell SilicaFlickable the height of its content.
         contentHeight: column.height
 
         // Place our content in a Column.  The PageHeader is always placed at the top
         // of the page, followed by our content.
-        Column {
+        Column
+        {
             id: column
 
             width: page.width
             spacing: Theme.paddingLarge
-            PageHeader {
+            PageHeader
+            {
                 title: "Heippa vaan!"
             }
-            Label {
+            Label
+            {
                 x: Theme.paddingLarge
                 text: "Kimmo testaa"
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeLarge
             }
-            Image  {
+            Image
+            {
+                id: logo
                 source: "../pics/eketux.png"
+                anchors.horizontalCenter: column.horizontalCenter
+                smooth: true
+                Behavior on rotation { NumberAnimation { duration: 500; easing.type: Easing.Linear } }
             }
         }
+
+        Timer
+        {
+            id: timer1
+            interval: 500; running: true; repeat: true
+            onTriggered:
+            {
+                logo.rotation = logo.rotation + 10
+            }
+        } // Timer
+
     }
 }
 

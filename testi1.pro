@@ -19,5 +19,6 @@ OTHER_FILES += qml/testi1.qml \
     rpm/testi1.spec \
     rpm/testi1.yaml \
     testi1.desktop \
-    qml/pics/eketux.png
+    qml/pics/eketux.png \
+    qml/pages/ThirdPage.qml
 

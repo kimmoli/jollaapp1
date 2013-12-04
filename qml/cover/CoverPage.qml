@@ -32,22 +32,39 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
-    Label {
-        id: label
+
+    Image {
+        id: tux
         anchors.centerIn: parent
-        text: "Kimmon oma\nsofta"
+        opacity: 0.5
+        source: "../pics/eketux.png"
+        Behavior on rotation { NumberAnimation { duration: 500; easing.type: Easing.Linear } }
+        Label {
+            id: label
+            anchors.top: parent
+            text: "Kimmo testaa"
+        }
+
     }
+
+    Timer
+    {
+        id: timertux
+        interval: 500; running: true; repeat: true
+        onTriggered:
+        {
+            tux.rotation = tux.rotation + 10
+        }
+    } // Timer
+
 
     CoverActionList {
         id: coverAction
 
         CoverAction {
-            iconSource: "image://theme/icon-cover-next"
+            iconSource: "image://theme/icon-cover-favorite"
         }
 
-        CoverAction {
-            iconSource: "image://theme/icon-cover-pause"
-        }
     }
 }
 
