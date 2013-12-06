@@ -54,6 +54,11 @@ Page
                 text: "Näytä kolmas sivu"
                 onClicked: pageStack.push(Qt.resolvedUrl("ThirdPage.qml"))
             }
+            MenuItem
+            {
+                text: "Näytä neljäs sivu"
+                onClicked: pageStack.push(Qt.resolvedUrl("FourthPage.qml"))
+            }
 
         }
 

@@ -32,20 +32,24 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
+    id: cb
 
-    Image {
+    Image
+    {
         id: tux
         anchors.centerIn: parent
         opacity: 0.5
         source: "../pics/eketux.png"
         Behavior on rotation { NumberAnimation { duration: 500; easing.type: Easing.Linear } }
-        Label {
-            id: label
+    }
+        Label
+        {
+            id: coverlabel
             anchors.top: parent
             text: "Kimmo testaa"
         }
 
-    }
+
 
     Timer
     {

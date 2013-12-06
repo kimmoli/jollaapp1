@@ -20,5 +20,7 @@ OTHER_FILES += qml/testi1.qml \
     rpm/testi1.yaml \
     testi1.desktop \
     qml/pics/eketux.png \
-    qml/pages/ThirdPage.qml
+    qml/pages/ThirdPage.qml \
+    qml/pages/FourthPage.qml \
+    qml/pages/InfoBanner.qml
 

@@ -36,6 +36,9 @@ ApplicationWindow
 {
     initialPage: FirstPage { }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
+    InfoBanner {
+        id: info
+    }
 }
 
 

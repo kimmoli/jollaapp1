@@ -4,52 +4,98 @@ import Sailfish.Silica 1.0
 
 Page {
     id: page
-    SilicaListView {
-        id: listView
-        model: 5
+    SilicaFlickable
+    {
         anchors.fill: parent
-        header: PageHeader {
-            title: "Kolmas sivu"
-        }
-        delegate: BackgroundItem {
-            id: delegate
 
-            Label {
+
+        Timer
+        {
+            id: timer2
+            interval: 100; running: true; repeat: true
+            onTriggered:
+            {
+                bar.value = bar.value + 1
+                if (bar.value >= bar.maximumValue)
+                {
+                    bar.value = bar.minimumValue
+                }
+            }
+        } // Timer
+
+        Column
+        {
+            id: column
+
+            width: page.width
+            spacing: Theme.paddingLarge
+
+            PageHeader
+            {
+                title: "Heippa taas"
+            }
+
+            ProgressBar
+            {
+                id: bar
+                anchors.horizontalCenter: column.Center
+                width: column.width
+                maximumValue: 100
+                value: 50
+            }
+
+            Button
+            {
+               text: "edellinen sivu"
+               anchors.horizontalCenter: column.Center
+               onClicked: pageStack.pop()
+            }
+            Button
+            {
+               text: "Uusi sivu"
+               anchors.horizontalCenter: column.Center
+               onClicked: pageStack.push(Qt.resolvedUrl("ThirdPage.qml"))
+            }
+
+            TextField {
+                id: nameField
+                width: 480
+                placeholderText: "Kirjoita nimesi"
+            }
+
+            ComboBox {
+                width: page.width
+
+                label: (nameField.text ? nameField.text + ", Valintasi on " : "Valintasi on ")
+
+                menu: ContextMenu {
+                    MenuItem { text: "Joulu" }
+                    MenuItem { text: "Juhannus" }
+                    MenuItem { text: "Vappu" }
+                    MenuItem { text: "Pääsiäinen" }
+                }
+            }
+
+            TextSwitch {
+                id: mute
+                text: "Täppä"
+                description: "Tämän voi laittaa päälle tai pois"
+            }
+            Label
+            {
                 x: Theme.paddingLarge
-                text: "Läppä " + index
-                color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                text: "Täppä on " + (mute.checked ? "päällä" : "pois")
+                font.pixelSize: Theme.fontSizeLarge
             }
-            onClicked: console.log("Clicked " + index)
+            Label
+            {
+                x: Theme.paddingLarge
+                text: "palkki menee " + bar.value
+                font.pixelSize: Theme.fontSizeLarge
+            }
+
+
         }
     }
 }
 
-/*
-Page {
-    id: pagethree
-    SilicaFlickable {
-        anchors.fill: parent
-        width: 150; height: 150
-        contentWidth: 300; contentHeight: 300
-        header: PageHeader {
-            title: "Kolmas sivu"
-        }
-
-        rebound: Transition {
-            NumberAnimation {
-                properties: "x,y"
-                duration: 1000
-                easing.type: Easing.OutBounce
-            }
-        }
-
-        Rectangle {
-            width: 300; height: 300
-            gradient: Gradient {
-                GradientStop { position: 0.0; color: "lightsteelblue" }
-                GradientStop { position: 1.0; color: "blue" }
-            }
-        }
-    }
-}
-*/

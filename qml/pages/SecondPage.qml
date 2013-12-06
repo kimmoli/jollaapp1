@@ -49,7 +49,7 @@ Page {
                 text: "Juttu " + index
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
             }
-            onClicked: console.log("Clicked " + index)
+            onClicked: coverlabel.text = "Juttu " + index
         }
     }
 }
