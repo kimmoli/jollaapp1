@@ -49,7 +49,7 @@ Page {
                 text: "Juttu " + index
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
             }
-            onClicked: coverlabel.text = "Juttu " + index
+            //onClicked: mainWindow.cover.coverlabel.text = "Juttu " + index
         }
     }
 }

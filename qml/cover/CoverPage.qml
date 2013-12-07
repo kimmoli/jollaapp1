@@ -46,6 +46,7 @@ CoverBackground {
         {
             id: coverlabel
             anchors.top: parent
+            anchors.horizontalCenter: parent.horizontalCenter
             text: "Kimmo testaa"
         }
 

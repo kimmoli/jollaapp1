@@ -46,21 +46,45 @@ Page
         {
             MenuItem
             {
-                text: "Näytä toinen sivu"
+                text: "Pitkä lista"
                 onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
             }
             MenuItem
             {
-                text: "Näytä kolmas sivu"
+                text: "Kaikenlaista"
                 onClicked: pageStack.push(Qt.resolvedUrl("ThirdPage.qml"))
             }
             MenuItem
             {
-                text: "Näytä neljäs sivu"
+                text: "Pingu zoom rotate"
                 onClicked: pageStack.push(Qt.resolvedUrl("FourthPage.qml"))
             }
 
         }
+
+        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
+        PushUpMenu
+        {
+            MenuItem
+            {
+                text: "Orientaatiotesti"
+                onClicked: pageStack.push(Qt.resolvedUrl("OrientationTest.qml"))
+            }
+
+            MenuItem
+            {
+                text: "webbiselain"
+                onClicked: pageStack.push(Qt.resolvedUrl("WevView.qml"))
+            }
+            MenuItem
+            {
+                text: "Omnomnom peli"
+                onClicked: pageStack.push(Qt.resolvedUrl("Sensors.qml"))
+            }
+
+
+        }
+
 
 
         // Tell SilicaFlickable the height of its content.

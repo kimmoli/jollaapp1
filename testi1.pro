@@ -22,5 +22,15 @@ OTHER_FILES += qml/testi1.qml \
     qml/pics/eketux.png \
     qml/pages/ThirdPage.qml \
     qml/pages/FourthPage.qml \
-    qml/pages/InfoBanner.qml
+    qml/pages/InfoBanner.qml \
+    qml/pages/OrientationTest.qml \
+    qml/pages/WevView.qml \
+    qml/pages/Sensors.qml \
+    qml/pics/sc-fish5.png \
+    qml/pics/sc-fish4.png \
+    qml/pics/sc-fish3.png \
+    qml/pics/sc-fish2.png \
+    qml/pics/sc-fish1.png \
+    qml/pics/sc-fish0.png \
+    qml/pics/nomnom.wav
 

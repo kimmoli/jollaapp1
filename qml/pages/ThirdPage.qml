@@ -16,6 +16,7 @@ Page {
             onTriggered:
             {
                 bar.value = bar.value + 1
+                pbc.value = bar.value / 100
                 if (bar.value >= bar.maximumValue)
                 {
                     bar.value = bar.minimumValue
@@ -38,7 +39,7 @@ Page {
             ProgressBar
             {
                 id: bar
-                anchors.horizontalCenter: column.Center
+                anchors.horizontalCenter: parent.horizontalCenter
                 width: column.width
                 maximumValue: 100
                 value: 50
@@ -47,13 +48,13 @@ Page {
             Button
             {
                text: "edellinen sivu"
-               anchors.horizontalCenter: column.Center
+               anchors.horizontalCenter: parent.horizontalCenter
                onClicked: pageStack.pop()
             }
             Button
             {
                text: "Uusi sivu"
-               anchors.horizontalCenter: column.Center
+               anchors.horizontalCenter: parent.horizontalCenter
                onClicked: pageStack.push(Qt.resolvedUrl("ThirdPage.qml"))
             }
 
@@ -94,8 +95,17 @@ Page {
                 font.pixelSize: Theme.fontSizeLarge
             }
 
-
         }
     }
+
+    ProgressCircle
+    {
+        anchors.centerIn: page
+        id: pbc
+        visible: mute.checked
+        value: 0
+    }
+
+
 }
 

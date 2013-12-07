@@ -73,7 +73,7 @@ DockedPanel {
 
     Timer {
         id: autoClose
-        interval: 15000
+        interval: 3000
         running: false
         onTriggered: {
             root.hide()
