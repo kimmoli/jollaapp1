@@ -81,6 +81,11 @@ Page
                 text: "Omnomnom peli"
                 onClicked: pageStack.push(Qt.resolvedUrl("Sensors.qml"))
             }
+            MenuItem
+            {
+                text: "Lumihiutale"
+                onClicked: pageStack.push(Qt.resolvedUrl("Snowflakes.qml"))
+            }
 
 
         }

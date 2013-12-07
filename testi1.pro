@@ -32,5 +32,10 @@ OTHER_FILES += qml/testi1.qml \
     qml/pics/sc-fish2.png \
     qml/pics/sc-fish1.png \
     qml/pics/sc-fish0.png \
-    qml/pics/nomnom.wav
+    qml/pics/nomnom.wav \
+    qml/pics/sc-snowflakes7.png \
+    qml/pages/Snowflakes.qml \
+    qml/pages/hiutale.qml \
+    qml/pics/sc-fish6.png \
+    qml/pics/kahenkilonsiika.wav
 

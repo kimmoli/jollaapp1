@@ -9,6 +9,7 @@ Page {
     id: page
 
     property int score: 0
+    property int siika: 1
 
 //    Media.Torch {
 //        id: lamppu
@@ -20,6 +21,12 @@ Page {
         id: playSound
         source: "../pics/nomnom.wav"
     }
+
+    Media.SoundEffect {
+        id: playSiika
+        source: "../pics/kahenkilonsiika.wav"
+    }
+
 
     Sensors.Accelerometer
     {
@@ -54,23 +61,45 @@ Page {
             if (((newX + (bubble.width/2)) > (nami.x - 20)) && ((newX + (bubble.width/2)) < (nami.x + 30)) && (newY > (nami.y - 20)) && (newY < (nami.y + 30)))
             {
 //                lamppu.enambled = true
-                playSound.play()
+                if (siika == 1)
+                    playSound.play()
+                else
+                    playSiika.play()
                 bubble.scale = 2
                 timerlamppu.start()
-                var kala = Math.floor(nami.scale * 10)
+                var kala = Math.floor(nami.scale * 10) * siika
                 score = score + kala
                 scoretus.text = kala
                 scoretusani.duration = 300
                 scoretus.visible =  true
                 scoretus.font.pixelSize = 200
                 timerscoretus.start()
-                info.displayError("Omnomnom " + score)
-                namiXa.duration = 10
-                namiYa.duration = 10
+
+                //info.displayError("Omnomnom " + score)
+
+                namiXa.duration = 0
+                namiYa.duration = 0
+
                 nami.x = randomNumber(bubble.width, page.width - bubble.width)
-                nami.y = randomNumber(30, page.height - bubble.height)
-                nami.source = "../pics/sc-fish" + randomNumber(0,5) +".png"
-                nami.scale = 1 + (randomNumber(0,10)/10)
+                if (nami.y < page.height/2) // ylempi puolikas, seuraava alas
+                    nami.y = randomNumber(page.height/2, page.height - bubble.height)
+                else
+                    nami.y = randomNumber(30, page.height/2)
+
+                if (timersiika.running)
+                {
+                    nami.source = "../pics/sc-fish" + randomNumber(0,5) +".png"
+                    nami.scale = 1 + (randomNumber(0,10)/10)
+                    siika = 1
+                }
+                else // kahen kilon siika seuraavaksi
+                {
+                    nami.source = "../pics/sc-fish6.png"
+                    nami.scale = 2
+                    siika = 10
+                    timersiika.restart()
+                }
+
             }
 
         }
@@ -207,6 +236,8 @@ Page {
             if (ny > (page.height - bubble.height))
                 ny = (page.height - bubble.height)
 
+            nami.mirror = (nx > nami.x)
+
             nami.x = nx
             nami.y = ny
         }
@@ -222,6 +253,15 @@ Page {
             bubble.scale = 1
         }
     } // Timer
+
+    Timer
+    {
+        id: timersiika
+        interval: 30000; running: true;
+        onTriggered:
+        {
+        }
+    }
 
 
 
